@@ -1,0 +1,31 @@
+
+html, body, layout {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+body {
+	font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+div, input, span, p, table {
+	box-sizing: border-box;
+}
+
+h1 {
+	color: $grey-dark;
+	font-weight: 300;
+}
+
+md-sidenav-container {
+	width: 100%;
+	height: 100%;
+}
+
+.sidebar {
+	a[md-button], a[md-raised-button] {
+		width: 100%;
+	}
+}

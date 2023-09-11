@@ -1,0 +1,57 @@
+<div class="row">
+	<div class="col__12--sm">
+		<h1>Add Constellation</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col__6--sm">
+		<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+			<md-input-container>
+				<input #name="ngModel" mdInput placeholder="Name" name="name" [(ngModel)]="constellation.name" required />
+				<md-error color="warn" *ngIf="(name.dirty || name.touched) && name.errors">
+					<span *ngIf="name.errors.required">This field is required</span>
+				</md-error>
+		    </md-input-container>
+			<md-input-container>
+				<input #code="ngModel" mdInput placeholder="Code" name="code" [(ngModel)]="constellation.code" maxlength="2" required />
+				<md-error color="warn" *ngIf="(code.dirty || code.touched) && code.errors">
+					<span *ngIf="code.errors.required">This field is required</span>
+				</md-error>
+		    </md-input-container>
+			<table class="table" cellpadding="0">
+				<tbody>
+					<tr *ngFor="let point of constellation.points; index as i; trackBy: index" trackByIndex>
+						<td>Point {{i+1}}</td>
+						<td>
+							<md-input-container>
+								<input mdInput placeholder="X" type="number" name="points[{{i}}][x]" min="0" max="10" [(ngModel)]="point.x" (ngModelChange)="viewer.update()" required />
+							</md-input-container>
+						</td>
+						<td>
+							<md-input-container>
+								<input mdInput placeholder="Y" type="number" name="points[{{i}}][y]" min="0" max="10" [(ngModel)]="point.y" (ngModelChange)="viewer.update()" required />
+							</md-input-container>
+						</td>
+						<td>
+							<md-input-container>
+								<input mdInput placeholder="Z" type="number" name="points[{{i}}][z]" min="0" max="10" [(ngModel)]="point.z" (ngModelChange)="viewer.update()" required />
+							</md-input-container>
+						</td>
+						<td>
+							<md-input-container>
+								<input mdInput placeholder="Name" type="text" name="points[{{i}}][name]" [(ngModel)]="point.name" required />
+							</md-input-container>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<button type="button" *ngIf="constellation.points.length < 12" md-button color="accent" (click)="addPoint()">Add Point</button>
+			<br />
+			<button type="submit" [disabled]="form.invalid" md-raised-button color="primary">Submit</button>
+		</form>
+	</div>
+	<div class="col__6--sm">
+		<three-viewer #viewer [points]="constellation.points" [close]="true"></three-viewer>
+	</div>
+</div>

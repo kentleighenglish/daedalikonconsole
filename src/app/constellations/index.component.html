@@ -1,0 +1,28 @@
+<a md-mini-fab [routerLink]="['/constellations/add']"><md-icon>add</md-icon></a>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Code</th>
+			<th>Points</th>
+			<th>Author</th>
+			<th>Created</th>
+			<th>Modified</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let constellation of constellations">
+			<td>{{constellation.name}}</td>
+			<td>{{constellation.code}}</td>
+			<td>{{constellation.points.length}}</td>
+			<td>Jeremy Lambert</td>
+			<td>16:43 12/04/17</td>
+			<td>16:43 12/04/17</td>
+			<td>
+				<a md-button color="primary" [routerLink]="['/constellations/edit', constellation.uuid]">Edit</a>
+				<a md-button color="primary" [routerLink]="['/constellations/view', constellation.uuid]">View</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,10 @@
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$custom-theme-primary: mat-palette($mat-teal, 500, 300, 800);
+$custom-theme-accent: mat-palette($mat-amber, 600, 400, 800);
+$custom-theme-warn: mat-palette($mat-red);
+
+$custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+@include angular-material-theme($custom-theme);

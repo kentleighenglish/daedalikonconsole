@@ -1,0 +1,20 @@
+
+.clearfix {
+	clear: both;
+
+	&:before, &:after {
+		display: table;
+		content: "";
+		clear: both;
+	}
+}
+
+.fright {
+	float: right;
+}
+
+.fleft {
+	float: left;
+}
+
+@include make-columns($g_columns);

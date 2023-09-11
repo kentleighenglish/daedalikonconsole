@@ -1,0 +1,30 @@
+//Brand Colours
+$primary: map-get($mat-teal, 500);
+$primary-light: map-get($mat-teal, 300);
+$primary-dark: map-get($mat-teal, 800);
+
+$secondary: map-get($mat-amber, 600);
+$secondary-light: map-get($mat-amber, 400);
+$secondary-dark: map-get($mat-amber, 800);
+
+$grey-lightest: map-get($mat-grey, 50);
+$grey-lighter: map-get($mat-grey, 200);
+$grey-light: map-get($mat-grey, 300);
+$grey: map-get($mat-grey, 500);
+$grey-dark: map-get($mat-grey, 600);
+$grey-darker: map-get($mat-grey, 800);
+$grey-darkest: map-get($mat-grey, 900);
+
+//Sizes
+$gap: 40px;
+
+$font-sm: 12px;
+$font-md: 14px;
+$font-lg: 16px;
+$font-xl: 20px;
+
+//Global vars
+$g_columns: 12;
+$bp-sm: 768px;
+$bp-md: 966px;
+$bp-lg: 1200px;

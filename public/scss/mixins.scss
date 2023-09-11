@@ -1,0 +1,29 @@
+
+@mixin column {
+	display: inline-block;
+	padding: ($gap/2);
+	float: left;
+}
+
+@mixin make-column($colWidth) {
+	@include column;
+	width: ($colWidth / $g_columns) * 100%;
+}
+
+@mixin make-columns($cols: $columns) {
+	@for $i from 1 through $cols {
+		.col__#{$i}--sm {
+			@include make-column($i);
+		}
+		.col__#{$i}--md {
+			@media(min-width: $bp-md) {
+				@include make-column($i);
+			}
+		}
+		.col__#{$i}--lg {
+			@media(min-width: $bp-md) {
+				@include make-column($i);
+			}
+		}
+	}
+}

@@ -1,0 +1,26 @@
+<a md-mini-fab [routerLink]="['/symbols/add']"><md-icon>add</md-icon></a>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Code</th>
+			<th>Constellation</th>
+			<th>Created</th>
+			<th>Modified</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let symbol of symbols">
+			<td>{{symbol.name}}</td>
+			<td>{{symbol.code}}</td>
+			<td>{{symbol.constellations_name}}</td>
+			<td>16:43 12/04/17</td>
+			<td>16:43 12/04/17</td>
+			<td>
+				<a md-button color="primary" [routerLink]="['/symbols/edit', symbol.uuid]">Edit</a>
+				<a md-button color="primary" [routerLink]="['/symbols/view', symbol.uuid]">View</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

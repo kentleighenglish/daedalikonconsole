@@ -1,0 +1,24 @@
+table.table {
+	width: 100%;
+	border-collapse: collapse;
+
+	thead {
+		font-weight: 300;
+
+		tr {
+			border-bottom: 2px solid $grey-lighter;
+		}
+	}
+
+	tbody {
+		tr {
+			border-bottom: 1px solid $grey-lighter;
+		}
+	}
+
+	th, td {
+		padding: $gap/4;
+		text-align: center;
+		font-size: $font-md;
+	}
+}

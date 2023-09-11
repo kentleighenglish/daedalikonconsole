@@ -1,0 +1,10 @@
+<md-sidenav-container>
+	<md-sidenav class="sidebar" mode="side" opened="true">
+		<md-list>
+			<md-list-item *ngFor="let item of globals.navigation">
+				<a md-button color="primary" [routerLink]="[item.url]" href="{{item.url}}">{{ item.label }}</a>
+			</md-list-item>
+		</md-list>
+	</md-sidenav>
+	<ng-content></ng-content>
+</md-sidenav-container>

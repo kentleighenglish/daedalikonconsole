@@ -1,0 +1,63 @@
+<div class="row">
+	<div class="col__12--sm">
+		<h1>Add Symbol</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col__8--sm"	>
+		<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+			<md-input-container>
+				<input #name="ngModel" mdInput placeholder="Name" name="name" [(ngModel)]="symbol.name" required />
+				<md-error color="warn" *ngIf="(name.dirty || name.touched) && name.errors">
+					<span *ngIf="name.errors.required">This field is required</span>
+				</md-error>
+		    </md-input-container>
+			<md-input-container>
+				<input
+					#constellation="ngModel"
+					mdInput
+					placeholder="Constellation"
+					name="constellation"
+					[(ngModel)]="constellationField"
+					[mdAutocomplete]="autoConstellations"
+					(ngModelChange)="onConstellationChange()"
+					required
+				/>
+				<md-error color="warn" *ngIf="(constellation.dirty || constellation.touched) && constellation.errors">
+					<span *ngIf="constellation.errors.required">This field is required</span>
+				</md-error>
+			</md-input-container>
+			<a *ngIf="activeConstellation" md-button (click)="changeConstellation()" color="primary"><md-icon>lock_open</md-icon></a>
+			<md-autocomplete #autoConstellations="mdAutocomplete" id="constellationAutocomplete">
+			   <md-option *ngFor="let option of this.filteredConstellations" [value]="option.uuid">
+				   {{option.name}}
+			   </md-option>
+			</md-autocomplete>
+			<table class="table" cellpadding="0">
+				<tbody>
+					<tr *ngFor="let point of symbol.points; index as i; trackBy: index" trackByIndex>
+						<td>
+							<md-select
+								name="points[{{i}}]"
+
+								[(ngModel)]="point.uuid"
+								(ngModelChange)="changePoint($event, i)"
+							>
+							<md-option *ngFor="let p of activePoints" [value]="p.uuid" [disabled]="selectedPoints[p.uuid] == true">{{ p.name }}</md-option>
+							</md-select>
+						</td>
+						<td>
+							<a md-button (click)="clearPoint(i)">Clear</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			{{symbol.points | json}}
+			<br />
+
+		</form>
+	</div>
+	<div class="col__4--sm">
+		<three-viewer #viewer [points]="symbol.points" [close]="false"></three-viewer>
+	</div>
+</div>
